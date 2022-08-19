@@ -13,7 +13,7 @@ public class ProfileServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/html/profile.html");
+        RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/jsp/profile.jsp");
         view.forward(req, resp);
     }
 }
