@@ -1,6 +1,6 @@
 <%@tag import="java.time.Year" %>
 <%@tag description="Application layout" pageEncoding="UTF-8" %>
-<%@attribute name="styles" fragment="true" %>
+<%@attribute name="head" fragment="true" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html lang="en">
@@ -24,8 +24,11 @@
         }
 
         .cover-container {
-            max-width: 42em;
             height: 100vh !important;
+        }
+
+        .cover-header {
+            max-width: 42em;
         }
 
         .nav-masthead .nav-link {
@@ -81,14 +84,13 @@
             text-align: start;
             color: #000;
         }
-
-        <jsp:invoke fragment="styles"/>
     </style>
+    <jsp:invoke fragment="head"/>
 </head>
 <body class="d-flex h-100 text-center text-white bg-dark">
 
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-    <header class="mb-auto">
+    <header class="cover-header mb-auto d-flex w-100 mx-auto flex-column">
         <div>
             <h3 class="float-md-start mb-0">FWA</h3>
             <c:set var="path" scope="request" value="${requestScope['javax.servlet.forward.servlet_path']}" />
