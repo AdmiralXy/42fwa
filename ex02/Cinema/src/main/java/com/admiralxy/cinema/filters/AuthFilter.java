@@ -3,7 +3,6 @@ package com.admiralxy.cinema.filters;
 import com.admiralxy.cinema.models.User;
 import com.admiralxy.cinema.services.AuthService;
 import org.springframework.context.ApplicationContext;
-
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
