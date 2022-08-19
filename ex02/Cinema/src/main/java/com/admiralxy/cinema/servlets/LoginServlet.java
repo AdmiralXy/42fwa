@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-        RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/html/signIn.html");
+        RequestDispatcher view = req.getRequestDispatcher("/WEB-INF/jsp/signIn.jsp");
         view.forward(req, resp);
     }
 
