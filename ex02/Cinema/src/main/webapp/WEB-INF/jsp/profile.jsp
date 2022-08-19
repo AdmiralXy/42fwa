@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <t:layout>
     <jsp:attribute name="head">
@@ -37,6 +38,7 @@
     </jsp:attribute>
     <jsp:body>
         <div class="container">
+        <jsp:useBean id="auths" class="java.util.ArrayList" scope="application" />
             <div class="row">
                 <div class="col-md-4">
                     <img class="profile-avatar img-fluid" src="https://via.placeholder.com/750" alt="none"/>
@@ -47,64 +49,28 @@
                 <div class="col-md-8">
                     <p class="profile-text profile-name mb-0">John Doe</p>
                     <p class="profile-text profile-email">john@doe.com</p>
-                    <div class="table-scrollable">
-                        <table class="table table-bordered table-dark">
-                            <thead>
-                            <tr>
-                                <th scope="col">Date</th>
-                                <th scope="col">Time</th>
-                                <th scope="col">IP</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>December 23, 2020</td>
-                                <td>20:20</td>
-                                <td>127.0.0.1</td>
-                            </tr>
-                            <tr>
-                                <td>December 24, 2020</td>
-                                <td>10:13</td>
-                                <td>127.0.0.1</td>
-                            </tr>
-                            <tr>
-                                <td>December 27, 2020</td>
-                                <td>17:53</td>
-                                <td>127.0.0.1</td>
-                            </tr>
-                            <tr>
-                                <td>December 23, 2020</td>
-                                <td>20:20</td>
-                                <td>127.0.0.1</td>
-                            </tr>
-                            <tr>
-                                <td>December 24, 2020</td>
-                                <td>10:13</td>
-                                <td>127.0.0.1</td>
-                            </tr>
-                            <tr>
-                                <td>December 27, 2020</td>
-                                <td>17:53</td>
-                                <td>127.0.0.1</td>
-                            </tr>
-                            <tr>
-                                <td>December 23, 2020</td>
-                                <td>20:20</td>
-                                <td>127.0.0.1</td>
-                            </tr>
-                            <tr>
-                                <td>December 24, 2020</td>
-                                <td>10:13</td>
-                                <td>127.0.0.1</td>
-                            </tr>
-                            <tr>
-                                <td>December 27, 2020</td>
-                                <td>17:53</td>
-                                <td>127.0.0.1</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <c:if test="${not empty auths}">
+                        <div class="table-scrollable">
+                            <table class="table table-bordered table-dark">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Time</th>
+                                    <th scope="col">IP</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach var="auth" items="${auths}">
+                                    <tr>
+                                        <td>${auth.date}</td>
+                                        <td>${auth.time}</td>
+                                        <td>${auth.address}</td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
+                    </c:if>
                 </div>
                 <div class="col-md-12 pt-3">
                     <div class="table-scrollable">
