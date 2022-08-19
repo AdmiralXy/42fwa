@@ -1,6 +1,7 @@
-<%@ tag import="java.time.Year" %>
+<%@tag import="java.time.Year" %>
 <%@tag description="Application layout" pageEncoding="UTF-8" %>
 <%@attribute name="styles" fragment="true" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -90,10 +91,20 @@
     <header class="mb-auto">
         <div>
             <h3 class="float-md-start mb-0">FWA</h3>
+            <c:set var="path" scope="request" value="${requestScope['javax.servlet.forward.servlet_path']}" />
             <nav class="nav nav-masthead justify-content-center float-md-end">
-                <a class="nav-link active" href="${pageContext.request.contextPath}/signIn">Login</a>
-                <a class="nav-link" href="${pageContext.request.contextPath}/signUp">Register</a>
-                <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/profile">Profile</a>
+                <a class="nav-link ${path == '/signIn' ? 'active' : 'inactive'}"
+                   href="${pageContext.request.contextPath}/signIn">
+                    Login
+                </a>
+                <a class="nav-link ${path == '/signUp' ? 'active' : 'inactive'}"
+                   href="${pageContext.request.contextPath}/signUp">
+                    Register
+                </a>
+                <a class="nav-link ${path == '/profile' ? 'active' : 'inactive'}"
+                   href="${pageContext.request.contextPath}/profile">
+                    Profile
+                </a>
             </nav>
         </div>
     </header>
