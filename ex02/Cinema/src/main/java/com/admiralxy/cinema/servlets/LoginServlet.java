@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,10 +45,8 @@ public class LoginServlet extends HttpServlet {
                 req.getSession())
         ) {
             String remoteAddr = req.getRemoteAddr();
-            if (remoteAddr.equals("0:0:0:0:0:0:0:1")) {
-                InetAddress localIp = java.net.InetAddress.getLocalHost();
-                remoteAddr = localIp.getHostAddress();
-            }
+            if (remoteAddr.equals("0:0:0:0:0:0:0:1"))
+                remoteAddr = "127.0.0.1";
             ((ArrayList<AuthLog>) req.getServletContext().getAttribute("auths"))
                     .add(new AuthLog(remoteAddr));
             resp.sendRedirect("/profile");
