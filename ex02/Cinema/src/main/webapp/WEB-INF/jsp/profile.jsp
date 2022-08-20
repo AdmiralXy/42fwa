@@ -42,9 +42,12 @@
             <div class="row">
                 <div class="col-md-4">
                     <img class="profile-avatar img-fluid" src="https://via.placeholder.com/750" alt="none"/>
-                    <div class="mt-3">
-                        <input class="form-control" type="file">
-                    </div>
+                    <form method="POST" action="${pageContext.request.contextPath}/images" enctype="multipart/form-data">
+                        <div class="mt-3">
+                            <input class="form-control" type="file" name="image">
+                            <input class="form-control mt-2" type="submit" value="Upload">
+                        </div>
+                    </form>
                 </div>
                 <div class="col-md-8">
                     <p class="profile-text profile-name mb-0">John Doe</p>

@@ -26,10 +26,10 @@ public class ProfileFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) resp;
         User authenticated = this.authService.getAuthenticated(request.getSession());
-//        if (authenticated == null) {
-//            response.sendError(403);
-//        } else {
+        if (authenticated == null) {
+            response.sendError(403);
+        } else {
             chain.doFilter(req, resp);
-//        }
+        }
     }
 }

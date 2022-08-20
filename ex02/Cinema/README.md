@@ -10,6 +10,7 @@
 * H2 Database
 * Lombok
 * Cargo Maven plugin with Tomcat
+* Thumbnailator
 
 ### Features
 

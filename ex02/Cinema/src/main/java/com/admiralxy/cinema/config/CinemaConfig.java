@@ -20,7 +20,7 @@ public class CinemaConfig {
     private String datasourceName;
 
     @Bean
-    public DataSource dataSource(){
+    public DataSource dataSource() {
         return new EmbeddedDatabaseBuilder()
                 .setType(EmbeddedDatabaseType.H2)
                 .setName(datasourceName)
