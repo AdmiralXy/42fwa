@@ -6,6 +6,8 @@ import com.admiralxy.cinema.repositories.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class ImageService {
 
@@ -18,5 +20,9 @@ public class ImageService {
 
     public void save(User user, Image image) {
         this.imageRepository.save(user, image);
+    }
+
+    public List<Image> findAll() {
+        return this.imageRepository.findAll();
     }
 }

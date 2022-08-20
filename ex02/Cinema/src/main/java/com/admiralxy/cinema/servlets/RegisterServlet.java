@@ -39,7 +39,8 @@ public class RegisterServlet extends HttpServlet {
                 req.getParameter("last_name"),
                 req.getParameter("phone_number"),
                 req.getParameter("email"),
-                req.getParameter("password")
+                req.getParameter("password"),
+                null
         );
         try {
             this.userService.save(user);

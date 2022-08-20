@@ -5,12 +5,12 @@
 * Spring Core
 * Spring Context
 * Spring JDBC
-* Spring Security Core
+* Spring Security Core (BCrypt)
 * Java Servlet API
 * H2 Database
 * Lombok
 * Cargo Maven plugin with Tomcat
-* Thumbnailator
+* JSTL
 
 ### Features
 

@@ -10,6 +10,10 @@
               font-size: 26px;
           }
 
+          .profile-avatar {
+              min-width: 100%;
+          }
+
           .profile-email {
               font-size: 18px;
           }
@@ -37,11 +41,15 @@
       </style>
     </jsp:attribute>
     <jsp:body>
-        <div class="container">
         <jsp:useBean id="auths" class="java.util.ArrayList" scope="application" />
+        <jsp:useBean id="user" scope="request" class="com.admiralxy.cinema.models.User" />
+        <jsp:useBean id="images" scope="request" class="java.util.ArrayList" />
+        <c:set var="profileImage" scope="request" value="${pageContext.request.contextPath}/cinema/images/${user.image}" />
+
+        <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <img class="profile-avatar img-fluid" src="https://via.placeholder.com/750" alt="none"/>
+                    <img class="profile-avatar img-fluid" src="${empty user.image ? 'https://via.placeholder.com/750' : profileImage}" alt="none"/>
                     <form method="POST" action="${pageContext.request.contextPath}/images" enctype="multipart/form-data">
                         <div class="mt-3">
                             <input class="form-control" type="file" name="image">
@@ -50,8 +58,8 @@
                     </form>
                 </div>
                 <div class="col-md-8">
-                    <p class="profile-text profile-name mb-0">John Doe</p>
-                    <p class="profile-text profile-email">john@doe.com</p>
+                    <p class="profile-text profile-name mb-0">${user.firstName} ${user.lastName}</p>
+                    <p class="profile-text profile-email">${user.email}</p>
                     <c:if test="${not empty auths}">
                         <div class="table-scrollable">
                             <table class="table table-bordered table-dark">
@@ -75,51 +83,32 @@
                         </div>
                     </c:if>
                 </div>
-                <div class="col-md-12 pt-3">
-                    <div class="table-scrollable">
-                        <table class="table table-bordered table-dark">
-                            <thead>
-                            <tr>
-                                <th scope="col">File name</th>
-                                <th scope="col">Size</th>
-                                <th scope="col">MIME</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>avatar.jpg</td>
-                                <td>106Kb</td>
-                                <td>image/jpg</td>
-                            </tr>
-                            <tr>
-                                <td>123.png</td>
-                                <td>6Kb</td>
-                                <td>image/png</td>
-                            </tr>
-                            <tr>
-                                <td>avatar.jpg</td>
-                                <td>106Kb</td>
-                                <td>image/jpg</td>
-                            </tr>
-                            <tr>
-                                <td>123.png</td>
-                                <td>6Kb</td>
-                                <td>image/png</td>
-                            </tr>
-                            <tr>
-                                <td>avatar.jpg</td>
-                                <td>106Kb</td>
-                                <td>image/jpg</td>
-                            </tr>
-                            <tr>
-                                <td>123.png</td>
-                                <td>6Kb</td>
-                                <td>image/png</td>
-                            </tr>
-                            </tbody>
-                        </table>
+                <c:if test="${not empty images}">
+                    <div class="col-md-12 pt-3">
+                        <div class="table-scrollable">
+                            <table class="table table-bordered table-dark">
+                                <thead>
+                                <tr>
+                                    <th scope="col">File name</th>
+                                    <th scope="col">Size</th>
+                                    <th scope="col">MIME</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach var="image" items="${images}">
+                                    <tr>
+                                        <td>
+                                            <a target="_blank" href="${pageContext.request.contextPath}/cinema/images/${image.name}">${image.originalName}</a>
+                                        </td>
+                                        <td>${image.size}</td>
+                                        <td>${image.mime}</td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
+                </c:if>
             </div>
         </div>
     </jsp:body>
