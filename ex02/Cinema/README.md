@@ -7,7 +7,7 @@
 * Spring JDBC
 * Spring Security Core (BCrypt)
 * Java Servlet API
-* H2 Database
+* H2 Database (in-memory)
 * Lombok
 * Cargo Maven plugin with Tomcat
 * JSTL
@@ -17,8 +17,10 @@
 * Registration
 * Authentication
 * Profile page
-* Saving the current user in the session
+* Saving the current user in an HTTP session
 * Embedded database with initial schema and data
+* Logging of authorized users with date and IP
+* Uploading a profile picture
 
 ### Quick start
 
