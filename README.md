@@ -1,23 +1,30 @@
 ## FWA
 
+### About
+
+Basic Spring Core with Spring JDBC and Java Servlet API web application
+
 ### Dependencies
 
 * Spring Core
 * Spring Context
 * Spring JDBC
-* Spring Security Core
+* Spring Security Core (BCrypt)
 * Java Servlet API
-* H2 Database
+* H2 Database (in-memory)
 * Lombok
 * Cargo Maven plugin with Tomcat
+* JSTL
 
 ### Features
 
 * Registration
 * Authentication
 * Profile page
-* Saving the current user in the session
+* Saving the current user in an HTTP session
 * Embedded database with initial schema and data
+* Logging of authorized users with date and IP
+* Uploading a profile picture
 
 ### Quick start
 
@@ -31,3 +38,9 @@
 * Login page: /signIn
 * Register page: /signUp
 * Profile page: /profile
+
+### Examples
+
+![This is an image](assets/signIn.jpg)
+
+![This is an image](assets/profile.jpg)

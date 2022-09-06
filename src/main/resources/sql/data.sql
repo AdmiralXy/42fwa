@@ -1,0 +1,1 @@
+INSERT INTO users (first_name, last_name, phone_number, email, password) VALUES ('John', 'Doe', '+7 (937) 555-35-35', 'john@doe.com', '$2a$12$5ysw5BykTsQO28mfuwZA4uEX7XwfGDDT65t6uDykP5C4zQkMwzhEO');
